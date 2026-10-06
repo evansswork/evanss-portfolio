@@ -1,0 +1,266 @@
+/* ============================================================
+   RESET
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.1rem);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+img, svg, canvas { display: block; max-width: 100%; }
+/* atribut hidden harus selalu menang, walau elemennya punya display dari kelas (mis. .btn) */
+[hidden] { display: none !important; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, p, figure { margin: 0; }
+code { font-family: ui-monospace, Menlo, monospace; font-size: 0.85em; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+
+.container { width: var(--container); margin-inline: auto; }
+.section { padding-block: var(--section-y); position: relative; }
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.section__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-variation-settings: 'opsz' 96;
+  font-size: clamp(2.4rem, 5.6vw, 4.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  max-width: 16ch;
+  text-wrap: balance;
+}
+.section__title--small { font-size: clamp(1.8rem, 3.4vw, 2.8rem); }
+.section__sub { color: var(--mute); max-width: 44ch; font-size: 1.02rem; }
+.section__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem 3rem;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.word, .char { display: inline-block; will-change: transform; }
+.line-mask { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+
+/* ============================================================
+   BUTTONS & LINKS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.5rem;
+  border-radius: 999px;
+  border: var(--border);
+  background: var(--paper);
+  box-shadow: var(--shadow-sm);
+  font-weight: 700;
+  font-size: 0.98rem;
+  transition: transform 0.25s var(--bounce), box-shadow 0.25s var(--bounce), background 0.25s;
+}
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ink); }
+.btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+.btn--primary { background: var(--ink); color: var(--paper); box-shadow: 3px 3px 0 var(--pink); }
+.btn--primary:hover { box-shadow: 5px 5px 0 var(--pink); }
+.btn--small { padding: 0.6rem 1.1rem; font-size: 0.88rem; }
+[data-magnetic] { will-change: transform; }
+
+.link {
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  background-image: linear-gradient(var(--yellow), var(--yellow));
+  background-repeat: no-repeat;
+  background-size: 100% 0.35em;
+  background-position: 0 90%;
+  transition: background-size 0.35s var(--ease);
+  padding-inline: 0.1em;
+}
+.link:hover { background-size: 100% 100%; }
+.link--muted { color: var(--mute); background-image: linear-gradient(var(--paper-2), var(--paper-2)); }
+
+/* ============================================================
+   CURSOR
+   ============================================================ */
+.cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 2px solid var(--paper);
+  pointer-events: none;
+  z-index: 120;
+  transform: translate(-50%, -50%);
+  display: none;
+  opacity: 0;
+  transition: width 0.3s var(--bounce), height 0.3s var(--bounce), background 0.3s;
+}
+.cursor span {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  font-size: 0.72rem; font-weight: 700;
+  color: var(--ink);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.cursor.is-hover { width: 44px; height: 44px; background: var(--yellow); border-color: var(--ink); }
+.cursor.is-label { width: 76px; height: 76px; background: var(--yellow); border-color: var(--ink); }
+.cursor.is-label span { opacity: 1; }
+@media (hover: hover) and (pointer: fine) { .cursor { display: block; } }
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.9rem clamp(1.25rem, 4vw, 2.5rem);
+  padding-top: calc(0.9rem + env(safe-area-inset-top, 0px));
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.nav.is-scrolled { background: var(--paper); border-bottom: var(--border); }
+.nav__logo {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.15rem;
+}
+.nav__logo i { font-style: normal; color: var(--pink); }
+.nav__links { display: flex; gap: 0.25rem; }
+.nav__links a {
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  border: 2px solid transparent;
+  transition: background 0.25s, border-color 0.25s, transform 0.25s var(--bounce);
+}
+.nav__links a:hover { background: var(--yellow); border-color: var(--ink); transform: rotate(-2deg); }
+.nav__links a.is-active { background: var(--paper); border-color: var(--ink); }
+
+.nav__burger { display: none; width: 44px; height: 44px; position: relative; border: var(--border); border-radius: 50%; background: var(--paper); box-shadow: var(--shadow-sm); }
+.nav__burger span { position: absolute; left: 11px; width: 18px; height: 2px; background: var(--ink); transition: transform 0.4s var(--ease), top 0.4s var(--ease); }
+.nav__burger span:nth-child(1) { top: 16px; }
+.nav__burger span:nth-child(2) { top: 24px; }
+.nav__burger.is-open span:nth-child(1) { top: 20px; transform: rotate(45deg); }
+.nav__burger.is-open span:nth-child(2) { top: 20px; transform: rotate(-45deg); }
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 75;
+  background: var(--yellow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(6rem + env(safe-area-inset-top, 0px)) clamp(1.25rem, 6vw, 3rem) calc(2rem + env(safe-area-inset-bottom, 0px));
+  clip-path: circle(0% at calc(100% - 2.6rem) 2.3rem);
+  visibility: hidden;
+}
+.menu__links { display: flex; flex-direction: column; gap: 0.2rem; }
+.menu__links a {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.4rem, 10vw, 4rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.menu__foot { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.menu__foot a { padding: 0.5rem 0.9rem; border: var(--border); border-radius: 999px; background: var(--paper); font-weight: 600; font-size: 0.9rem; }
+
+@media (max-width: 900px) {
+  .nav__links, .nav__cta { display: none; }
+  .nav__burger { display: block; }
+}
+
+/* ============================================================
+   MARQUEE
+   ============================================================ */
+.marquee { overflow: hidden; white-space: nowrap; }
+.marquee__track { display: inline-flex; align-items: center; width: max-content; animation: marquee var(--marquee-speed, 40s) linear infinite; }
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee__item { display: inline-flex; align-items: center; gap: 1.25rem; padding-right: 1.25rem; }
+.marquee__item::after { content: '★'; color: var(--yellow); font-size: 0.8em; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.marquee--tools { padding: 0.6rem 0; --marquee-speed: 45s; }
+.marquee--tools .marquee__item { padding-right: 1rem; }
+.marquee--tools .marquee__item::after { content: none; }
+.marquee--reverse .marquee__track { animation-direction: reverse; }
+
+.marquee--strip {
+  background: var(--ink);
+  color: var(--paper);
+  border-top: var(--border);
+  border-bottom: var(--border);
+  padding: 0.9rem 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+  letter-spacing: -0.01em;
+  --marquee-speed: 30s;
+}
+
+/* ============================================================
+   STICKERS (hero, dapat di-drag)
+   ============================================================ */
+.sticker {
+  position: absolute;
+  padding: 0.6rem 1.1rem;
+  border: var(--border);
+  border-radius: 999px;
+  background: var(--yellow);
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(0.9rem, 1.3vw, 1.15rem);
+  white-space: nowrap;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  pointer-events: auto;
+  will-change: transform;
+}
+.sticker:active { cursor: grabbing; }
+.sticker--pink { background: var(--pink); color: var(--ink); } /* putih di atas pink cuma 2,85:1 */
+.sticker--blue { background: var(--blue); color: var(--paper); }
+.sticker--green { background: var(--green); }
+.sticker--orange { background: var(--orange); }
+.sticker--ink { background: var(--ink); color: var(--yellow); }
+.sticker--yellow { background: var(--yellow); }
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation-duration: 200s; }
+  .cursor { display: none !important; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+}
+

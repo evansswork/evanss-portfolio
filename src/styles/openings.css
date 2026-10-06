@@ -1,0 +1,94 @@
+/* ============================================================
+   OPENINGS — gaya untuk tiap animasi pembuka (src/openings/)
+   ============================================================ */
+.opening-cover { position: fixed; inset: 0; z-index: 99; background: #000; }
+.opening { position: fixed; inset: 0; z-index: 100; overflow: hidden; cursor: pointer; }
+.opening svg { position: absolute; inset: 0; display: block; }
+
+/* ---------- ZOOM: knockout text ----------
+   Lapisan tinta + huruf putih dengan mix-blend-mode multiply:
+   putih × halaman = halaman (tembus), tinta × halaman = gelap (tertutup).
+   Blend harus dipasang di wadah terluar: elemen fixed membuat stacking context sendiri,
+   jadi blend di elemen anak hanya akan berbaur dengan wadahnya (kosong), bukan dengan halaman. */
+.opening--zoom { mix-blend-mode: multiply; }
+.opening__captions {
+  position: fixed;
+  z-index: 101;
+  left: clamp(1.25rem, 4vw, 2.5rem);
+  right: clamp(1.25rem, 4vw, 2.5rem);
+  bottom: calc(clamp(1.25rem, 4vw, 2.5rem) + env(safe-area-inset-bottom, 0px));
+  display: flex; justify-content: space-between; gap: 1rem;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+  color: var(--paper);
+  pointer-events: none;
+}
+.opening__captions span:first-child { color: var(--yellow); }
+
+/* ---------- PAPER: lembar kertas berlubang ---------- */
+.opening__paper { background: transparent; }
+
+/* ---------- SLOT: kata bergulir + name tag ---------- */
+.opening--slot { display: grid; place-items: center; }
+.opening__bg {
+  position: absolute; inset: 0;
+  background: var(--yellow);
+  background-image: radial-gradient(rgba(22, 20, 15, 0.16) 1.2px, transparent 1.3px);
+  background-size: 26px 26px; background-position: center;
+}
+.opening__stage { position: relative; display: grid; place-items: center; gap: clamp(1.5rem, 4vw, 2.5rem); }
+.opening__roll { position: relative; overflow: hidden; height: clamp(3.6rem, 10vw, 7rem); width: min(90vw, 760px); }
+.opening__word {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-weight: 800; font-variation-settings: 'opsz' 96;
+  font-size: clamp(3rem, 9vw, 6.4rem); letter-spacing: -0.04em; line-height: 1;
+  transform: translateY(120%);
+}
+.opening__name { position: absolute; visibility: hidden; transform-origin: center; }
+.opening__dots { position: absolute; bottom: -4rem; display: flex; gap: 0.6rem; }
+.opening__dots i { width: 14px; height: 14px; border: 2px solid var(--ink); border-radius: 50%; display: block; }
+.opening__dots i:nth-child(1) { background: var(--pink); }
+.opening__dots i:nth-child(2) { background: var(--blue); border-radius: 3px; }
+.opening__dots i:nth-child(3) { background: var(--green); }
+.opening__dots i:nth-child(4) { background: var(--orange); border-radius: 3px; transform: rotate(45deg); }
+
+/* ============================================================
+   OPENING "EDIT" — timeline video editing (src/openings/edit.js)
+   ============================================================ */
+.opening--edit { background: transparent; color: var(--paper); }
+.oe-window { position: absolute; border-radius: 18px; outline: 3px solid var(--paper); box-shadow: 0 0 0 200vmax var(--ink); }
+.oe-timecode { position: absolute; top: 12px; left: 12px; padding: 0.2rem 0.55rem; border-radius: 7px; background: rgba(22, 20, 15, 0.8); color: var(--paper); font: 700 0.78rem/1.2 var(--font-body); font-variant-numeric: tabular-nums; }
+.oe-caption { position: absolute; left: 50%; bottom: 9%; max-width: 92%; margin: 0; padding: 0.28em 0.7em 0.34em; border-radius: 12px; background: var(--ink); color: var(--paper); font-family: var(--font-display); font-weight: 800; font-size: clamp(1.25rem, 3.2vw, 2.9rem); line-height: 1.05; letter-spacing: -0.035em; text-align: center; white-space: nowrap; translate: -50% 0; visibility: hidden; }
+.oe-caption em { padding: 0 0.16em; border-radius: 7px; background: var(--pink); color: var(--ink); font-style: normal; }
+.oe-caption em.is-blue { background: var(--blue); color: var(--paper); }
+.oe-panel { position: absolute; }
+.oe-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.6rem; color: rgba(255, 252, 245, 0.72); font-size: 0.8rem; font-weight: 700; }
+.oe-export { display: inline-flex; align-items: center; gap: 0.55rem; }
+.oe-bar { display: block; width: clamp(80px, 14vw, 170px); height: 8px; overflow: hidden; border-radius: 99px; background: rgba(255, 252, 245, 0.16); }
+.oe-bar b { display: block; width: 100%; height: 100%; background: var(--yellow); transform: scaleX(0); transform-origin: left; }
+.oe-pct { min-width: 3.2ch; color: var(--paper); font-style: normal; font-variant-numeric: tabular-nums; text-align: right; }
+.oe-tracks { position: relative; display: grid; gap: 6px; padding: 10px 12px 12px; border: 2px solid rgba(255, 252, 245, 0.18); border-radius: 14px; background: #1f1c17; }
+.oe-row { display: grid; grid-template-columns: 34px 1fr; align-items: center; }
+.oe-row small { color: rgba(255, 252, 245, 0.5); font-size: 0.7rem; font-weight: 700; }
+.oe-ruler div { display: flex; justify-content: space-between; color: rgba(255, 252, 245, 0.42); font-size: 0.66rem; font-variant-numeric: tabular-nums; }
+.oe-lane { position: relative; display: flex; gap: 4px; height: 30px; }
+.oe-clip { display: flex; align-items: center; min-width: 0; padding: 0 0.7rem; overflow: hidden; border: 2px solid var(--ink); border-radius: 7px; color: var(--ink); font-size: 0.78rem; font-weight: 800; white-space: nowrap; box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.16); transition: filter 0.2s, box-shadow 0.2s; } /* transform dipegang GSAP — jangan diberi CSS transition */
+.oe-clip--hook { flex: 0 0 26%; background: var(--pink); }
+.oe-clip--build { flex: 1; background: var(--blue); color: var(--paper); }
+.oe-clip--payoff { flex: 0 0 30%; background: var(--green); }
+.oe-clip.is-on { filter: brightness(1.12); box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.16), 0 0 0 2px var(--paper); }
+.oe-lane--text { height: 18px; display: block; }
+.oe-cap { position: absolute; top: 0; height: 100%; border: 2px solid var(--ink); border-radius: 5px; background: var(--yellow); }
+.oe-wave { align-items: center; gap: 2px; height: 22px; }
+.oe-wave i { flex: 1; height: var(--h); border-radius: 2px; background: var(--orange); opacity: 0.9; }
+.oe-scrub { position: absolute; top: 6px; bottom: 6px; left: 46px; right: 12px; pointer-events: none; }
+.oe-playhead { position: absolute; top: 0; bottom: 0; left: 0; width: 2px; margin-left: -1px; background: var(--pink); box-shadow: 0 0 0 1px rgba(22, 20, 15, 0.6); }
+.oe-playhead::before { content: ''; position: absolute; top: -6px; left: -5px; width: 12px; height: 10px; border-radius: 3px 3px 6px 6px; background: var(--pink); }
+@media (max-width: 720px) {
+  .oe-caption { white-space: normal; width: max-content; font-size: clamp(1.15rem, 6vw, 1.7rem); }
+  .oe-row { grid-template-columns: 26px 1fr; }
+  .oe-scrub { left: 38px; }
+  .oe-clip { padding: 0 0.45rem; font-size: 0.64rem; }
+  .oe-head { font-size: 0.7rem; }
+}

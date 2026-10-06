@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Evan Suryadinata — Marketing, Creative, IT</title>
+  <meta name="description" content="Portfolio of Evan Suryadinata — content strategist, video editor and informatics student. TikTok live commerce, short-form content, scriptwriting, AI engineering." />
+  <meta name="theme-color" content="#FFD23F" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+  <meta property="og:title" content="Evan Suryadinata — Marketing, Creative, IT" />
+  <meta property="og:description" content="Content that actually sells. Short-form systems, live commerce, scripts — plus an informatics degree in progress." />
+  <meta property="og:type" content="website" />
+  <!-- og:image, canonical, JSON-LD & <noscript> diisi otomatis dari content/ saat build (scripts/vite-plugins.mjs) -->
+  <meta property="og:image" content="/images/og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <!--seo:head-->
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Evan Suryadinata S",
+    "jobTitle": "Content strategist, video editor & informatics student",
+    "url": "https://evansuryadinata.vercel.app",
+    "sameAs": ["https://www.linkedin.com/in/evansuryadinata", "https://www.instagram.com/evanss06", "https://github.com/evansswork"],
+    "alumniOf": "Petra Christian University",
+    "address": { "@type": "PostalAddress", "addressLocality": "Surabaya", "addressCountry": "ID" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <noscript><style>#opening-cover{display:none}</style></noscript>
+  <!--seo:noscript-->
+  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- Penutup sementara sampai opening (src/openings/) mengambil alih -->
+  <div class="opening-cover" id="opening-cover" aria-hidden="true"></div>
+
+  <!-- Custom cursor (desktop only) -->
+  <div class="cursor" id="cursor" aria-hidden="true"><span id="cursor-label"></span></div>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#hero" data-scroll-to="#hero" aria-label="Back to top"><span>Evan</span><i>S.</i></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#about" data-scroll-to="#about">About</a>
+      <a href="#experience" data-scroll-to="#experience">Experience</a>
+      <a href="#work" data-scroll-to="#work">Work</a>
+      <a href="#achievements" data-scroll-to="#achievements">Achievements</a>
+      <a href="#skills" data-scroll-to="#skills">Skills</a>
+      <a href="#education" data-scroll-to="#education">Education</a>
+    </nav>
+    <div class="nav__right">
+      <button class="cmdk-btn" id="cmdk-open" aria-label="Open quick menu" aria-keyshortcuts="Control+K Meta+K" hidden></button>
+      <button class="sound-toggle" id="sound-toggle" aria-pressed="false" aria-label="Turn sound on" data-cursor="Sound" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path class="sound-toggle__body" d="M4 9h4l5-4v14l-5-4H4z"/><path class="sound-toggle__wave" d="M16 9.5a3.5 3.5 0 0 1 0 5M18.5 7a7 7 0 0 1 0 10"/><path class="sound-toggle__mute" d="M16.5 9.5l5 5M21.5 9.5l-5 5"/></svg>
+      </button>
+      <a class="btn btn--small nav__cta" href="#contact" data-scroll-to="#contact" data-magnetic>Say hi</a>
+    </div>
+    <button class="nav__burger" id="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="menu" id="nav-menu" aria-hidden="true">
+    <nav class="menu__links" aria-label="Mobile">
+      <a href="#about" data-scroll-to="#about">About</a>
+      <a href="#experience" data-scroll-to="#experience">Experience</a>
+      <a href="#process" data-scroll-to="#process">How I work</a>
+      <a href="#work" data-scroll-to="#work">Work</a>
+      <a href="#achievements" data-scroll-to="#achievements">Achievements</a>
+      <a href="#skills" data-scroll-to="#skills">Skills</a>
+      <a href="#education" data-scroll-to="#education">Education</a>
+      <a href="#contact" data-scroll-to="#contact">Contact</a>
+    </nav>
+    <div class="menu__foot" id="menu-socials"></div>
+  </div>
+
+  <main id="main" tabindex="-1">
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="hero">
+      <canvas class="hero__canvas" id="hero-canvas" aria-label="Interactive 3D shapes: drag to spin, click a shape to pop it"></canvas>
+
+      <div class="hero__inner container">
+        <div class="hero__content">
+          <div class="hero__nametag" id="hero-nametag">
+            <span class="hero__nametag-dot"></span>
+            <span>Hi, I'm <b id="hero-name"></b></span>
+          </div>
+          <h1 class="hero__title" id="hero-title"></h1>
+          <p class="hero__lede" id="hero-lede"></p>
+          <div class="hero__actions" id="hero-actions">
+            <a class="btn btn--primary" href="#work" data-scroll-to="#work" data-magnetic>See my work</a>
+            <a class="btn" id="hero-cv" href="#" target="_blank" rel="noopener" data-magnetic>Download CV</a>
+          </div>
+        <div class="hero__focus" id="hero-focus"></div>
+        </div>
+        <p class="hero__hint" id="hero-hint">Drag to spin · click a shape to pop it · double-click for chaos · stickers are draggable</p>
+      </div>
+
+      <div class="hero__stickers" id="hero-stickers" aria-hidden="true"></div>
+    </section>
+
+    <!-- Marquee strip -->
+    <div class="marquee marquee--strip" aria-hidden="true">
+      <span class="marquee__label" id="marquee-label"></span>
+      <div class="marquee__track" id="marquee-roles"></div>
+    </div>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="about section" id="about">
+      <div class="container about__grid">
+        <div class="about__visual">
+          <figure class="about__photo" id="about-photo" data-tilt>
+            <img alt="Evan Suryadinata" />
+            <figcaption>Your photo goes here<br /><code>public/images/profile/</code></figcaption>
+            <span class="about__tape about__tape--a"></span>
+            <span class="about__tape about__tape--b"></span>
+          </figure>
+        </div>
+        <div class="about__text">
+          <h2 class="section__title" data-split-words>Storytelling on the front, sales on the back.</h2>
+          <div class="about__bio" id="about-bio"></div>
+          <div class="now" id="now"></div>
+        </div>
+      </div>
+      <div class="container">
+        <ul class="stats" id="stats"></ul>
+      </div>
+    </section>
+
+    <!-- ================= EXPERIENCE ================= -->
+    <section class="experience section" id="experience">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" data-split-words>Where I've been.</h2>
+          <p class="section__sub">Grouped by where the work happened. Tap a role to see what I actually did.</p>
+        </div>
+        <div class="tl" id="xp-timeline"></div>
+        <div class="xgroups" id="xgroups"></div>
+      </div>
+    </section>
+
+    <!-- ================= PLAYBOOK (src/features/playbook.js) ================= -->
+    <section class="playbook section" id="process">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" data-split-words>How I make content that works.</h2>
+          <p class="section__sub">The same four steps behind every number on this page. Each one links to a case study that shows it.</p>
+        </div>
+        <div class="pb" id="playbook"></div>
+      </div>
+    </section>
+
+    <!-- ================= WORK ================= -->
+    <section class="work section" id="work">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" data-split-words>Things I made.</h2>
+          <div class="tabs" role="tablist" aria-label="Project type">
+            <button class="tabs__btn is-active" data-tab="marketing" role="tab" aria-selected="true">Marketing &amp; content</button>
+            <button class="tabs__btn" data-tab="it" role="tab" aria-selected="false">IT &amp; code</button>
+          </div>
+        </div>
+        <div class="work__panel" id="work-marketing" data-panel="marketing"></div>
+        <div class="work__panel" id="work-it" data-panel="it" hidden></div>
+      </div>
+    </section>
+
+    <!-- ================= ACHIEVEMENTS (src/features/achievements.js) ================= -->
+    <section class="achievements section" id="achievements">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" data-split-words>Achievements.</h2>
+          <p class="section__sub">Awards, competitions and selections. Hover a medal; each one links to its proof.</p>
+        </div>
+        <ul class="medals" id="medals"></ul>
+      </div>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section class="skills section" id="skills">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" data-split-words>Skills &amp; tools.</h2>
+          <p class="section__sub">Platforms for the marketing side, a growing stack for the code side.</p>
+        </div>
+      </div>
+      <div class="marquee marquee--tools" id="tools-row-a"><div class="marquee__track"></div></div>
+      <div class="marquee marquee--tools marquee--reverse" id="tools-row-b"><div class="marquee__track"></div></div>
+      <div class="container">
+        <p class="skills__hint">Click a skill to see where I actually used it.</p>
+        <div class="stickerwall" id="stickerwall"></div>
+        <div class="evidence" id="evidence" hidden></div>
+      </div>
+    </section>
+
+    <!-- ================= EDUCATION ================= -->
+    <section class="education section" id="education">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section__title" data-split-words>Education &amp; certifications.</h2>
+          <p class="section__sub">Informatics at Petra Christian University, plus the Dicoding courses behind the AI Engineer track.</p>
+        </div>
+        <div class="education__grid">
+          <div><h3 class="subhead">Education</h3><ol class="edu" id="edu-list"></ol></div>
+          <div><h3 class="subhead">Certifications</h3><ol class="certs" id="cert-list"></ol></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="contact section" id="contact">
+      <div class="container">
+        <p class="contact__kicker" id="contact-status"></p>
+        <h2 class="contact__title" data-split-chars>Let's make something.</h2>
+        <a class="contact__mail" id="contact-mail" href="#" data-magnetic></a>
+        <div class="composer" id="composer"></div>
+        <ul class="contact__socials" id="contact-socials"></ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Scroll badge: rotates with scroll, click = back to top -->
+  <button class="badge" id="scroll-badge" aria-label="Back to top">
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <defs><path id="badge-circle" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0" /></defs>
+      <text class="badge__text"><textPath href="#badge-circle">evan suryadinata • marketing • creative • code • </textPath></text>
+    </svg>
+    <span class="badge__arrow" aria-hidden="true"></span>
+  </button>
+
+  <!-- CV otomatis (src/features/cv.js) — bisa disimpan jadi PDF lewat Print -->
+  <div class="cv" id="cv" role="dialog" aria-modal="true" aria-label="Curriculum vitae" aria-hidden="true">
+    <div class="cv__bar">
+      <span class="cv__title">Curriculum vitae</span>
+      <div class="cv__switches">
+        <div class="cv__switch" role="group" aria-label="CV version">
+          <button data-cv-version="marketing" aria-pressed="true">Marketing</button>
+          <button data-cv-version="tech" aria-pressed="false">Tech</button>
+        </div>
+        <div class="cv__switch" role="group" aria-label="CV length">
+          <button data-cv-length="page" aria-pressed="true">1 page</button>
+          <button data-cv-length="full" aria-pressed="false">Full</button>
+        </div>
+      </div>
+      <div class="cv__actions">
+        <a class="btn btn--small" id="cv-pdf" href="#" download hidden>Download PDF</a>
+        <button class="btn btn--small btn--primary" data-cv-print>Save as PDF</button>
+        <button class="modal__close cv__close" data-cv-close aria-label="Close CV"><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="cv__scroll" tabindex="0" role="region" aria-label="CV preview"><article class="cv__sheet cvs" id="cv-sheet"></article></div>
+  </div>
+
+  <!-- Command palette (Ctrl/⌘ K) -->
+  <div class="cmdk" id="cmdk" role="dialog" aria-modal="true" aria-label="Quick menu" aria-hidden="true">
+    <div class="cmdk__backdrop" data-cmdk-close></div>
+    <div class="cmdk__panel">
+      <div class="cmdk__search">
+        <input id="cmdk-input" type="text" placeholder="Jump to a section, case study or link" autocomplete="off" spellcheck="false" aria-controls="cmdk-list" aria-label="Search the quick menu" />
+        <kbd>Esc</kbd>
+      </div>
+      <ul class="cmdk__list" id="cmdk-list" role="listbox"></ul>
+      <div class="cmdk__foot"><span><kbd>↑</kbd> <kbd>↓</kbd> move</span><span><kbd>Enter</kbd> open</span><span><kbd>Esc</kbd> close</span></div>
+    </div>
+  </div>
+
+  <!-- Toast (copied!) -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Lightbox for proof screenshots -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox__backdrop" data-lightbox-close></div>
+    <figure class="lightbox__fig"><img alt="" /><figcaption></figcaption></figure>
+    <button class="modal__close lightbox__close" data-lightbox-close aria-label="Close image"><span></span><span></span></button>
+  </div>
+
+  <!-- Case study modal -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
+    <div class="modal__backdrop" data-modal-close></div>
+    <div class="modal__panel">
+      <button class="modal__close" data-modal-close aria-label="Close case study"><span></span><span></span></button>
+      <div class="modal__content" id="modal-content"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="wordmark" id="wordmark"></div>
+      <div class="footer__row">
+        <span>© <span id="year"></span> Evan Suryadinata</span>
+        <span class="clock" id="clock" hidden></span>
+        <div class="picker" id="opening-picker" hidden></div>
+        <span>Three.js · GSAP · Vite</span>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

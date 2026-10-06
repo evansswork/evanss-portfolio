@@ -1,0 +1,50 @@
+<!doctype html>
+<!-- Template gambar preview link (1200×630). Lihat tools/og/README.md -->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  :root { --yellow:#ffd23f; --pink:#ff5c8a; --blue:#3d6bff; --green:#35d07f; --orange:#ff8a3d; --ink:#16140f; --paper:#fffcf5; }
+  body { width: 1200px; height: 630px; overflow: hidden; font-family: 'Instrument Sans', sans-serif; color: var(--ink);
+    background: var(--yellow); background-image: radial-gradient(rgba(22,20,15,.13) 1.3px, transparent 1.4px); background-size: 28px 28px; position: relative; }
+  .left { position: absolute; left: 72px; top: 70px; width: 640px; }
+  .tag { display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px 10px 14px; border: 3px solid var(--ink); border-radius: 999px; background: var(--paper);
+    box-shadow: 4px 4px 0 var(--ink); font-weight: 600; font-size: 22px; transform: rotate(-2deg); }
+  .tag i { width: 14px; height: 14px; border-radius: 50%; background: var(--green); border: 2.5px solid var(--ink); }
+  h1 { margin-top: 34px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 112px; line-height: 1; letter-spacing: -0.04em; }
+  h1 em { font-style: normal; background: var(--pink); color: var(--paper); padding: 0 14px; border-radius: 18px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .sub { position: absolute; left: 72px; bottom: 56px; font-weight: 700; font-size: 24px; }
+  .sub b { font-family: 'Bricolage Grotesque', sans-serif; }
+  .shape { position: absolute; border: 4px solid var(--ink); box-shadow: 7px 7px 0 var(--ink); }
+  .ring { right: 70px; bottom: 70px; width: 210px; height: 210px; border-radius: 50%; background: var(--orange); }
+  .ring::after { content: ''; position: absolute; inset: 62px; border-radius: 50%; background: var(--yellow); border: 4px solid var(--ink); }
+  .pill { right: 330px; top: 250px; width: 96px; height: 210px; border-radius: 60px; background: var(--green); transform: rotate(-8deg); }
+  .ball { right: 245px; top: 70px; width: 130px; height: 130px; border-radius: 50%; background: var(--paper); }
+  .star { position: absolute; right: 60px; top: 46px; width: 190px; height: 190px; background: var(--ink); transform: rotate(12deg);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+  .star::after { content: ''; position: absolute; inset: 9px 9px 11px; background: #f0c64a;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+  .sticker { position: absolute; padding: 10px 20px; border: 3px solid var(--ink); border-radius: 999px; box-shadow: 4px 4px 0 var(--ink);
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px; white-space: nowrap; }
+  .s1 { right: 300px; top: 205px; background: var(--pink); color: var(--paper); transform: rotate(-7deg); }
+  .s2 { right: 175px; top: 330px; background: var(--blue); color: var(--paper); transform: rotate(5deg); }
+  .s3 { right: 430px; bottom: 120px; background: var(--ink); color: var(--yellow); transform: rotate(-4deg); }
+</style>
+</head>
+<body>
+  <div class="left">
+    <div class="tag"><i></i>Hi, I'm Evan Suryadinata S</div>
+    <h1>Content that <em>actually sells.</em></h1>
+  </div>
+  <div class="sub"><b>Marketing × Creative × Code</b> · Informatics student, Surabaya</div>
+  <div class="shape ball"></div>
+  <div class="star"></div>
+  <div class="shape pill"></div>
+  <div class="shape ring"></div>
+  <div class="sticker s1">1.4M views</div>
+  <div class="sticker s2">TikTok Live</div>
+  <div class="sticker s3">Laravel + PHP</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+/* ============================================================
+   TOKENS — ganti warna, font, radius, bayangan di sini
+   ============================================================ */
+:root {
+  --yellow: #ffd23f;
+  --pink: #ff5c8a;
+  --blue: #2f5cf0;   /* putih di atas biru ini = 5,2:1 (lolos WCAG AA) */
+  --tint-blue: #eaf1ff;
+  --tint-pink: #fff0f4;
+  --tint-green: #ebf9f1;
+  --green: #35d07f;
+  --orange: #ff8a3d;
+  --ink: #16140f;
+  --paper: #fffcf5;
+  --paper-2: #f5efe1;
+  --mute: #6b665b;
+  --line: var(--ink);
+
+  --shadow: 5px 5px 0 var(--ink);
+  --shadow-sm: 3px 3px 0 var(--ink);
+  --border: 2px solid var(--ink);
+  --radius: 18px;
+  --radius-sm: 12px;
+
+  --font-display: 'Bricolage Grotesque', 'Arial Black', sans-serif;
+  --font-body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --container: min(1280px, 92vw);
+  --section-y: clamp(5rem, 10vw, 8.5rem);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+

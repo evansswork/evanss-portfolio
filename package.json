@@ -1,0 +1,39 @@
+{
+  "name": "evan-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Portfolio website of Evan Suryadinata — Marketing | Creative | IT",
+  "scripts": {
+    "dev": "vite",
+    "check": "node scripts/check-content.mjs",
+    "lint": "eslint .",
+    "typecheck": "tsc -p jsconfig.json",
+    "test:e2e": "playwright test",
+    "verify": "npm run check && npm run lint && npm run typecheck && npm run build",
+    "prebuild": "node scripts/check-content.mjs --soft",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:single": "vite build --config vite.single.config.js",
+    "og": "python3 scripts/og-image/generate.py"
+  },
+  "dependencies": {
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.26",
+    "simple-icons": "^16.33.0",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.56.0",
+    "eslint": "^10.12.0",
+    "globals": "^17.13.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.2",
+    "vite-plugin-singlefile": "^2.3.0"
+  },
+  "engines": {
+    "node": ">=20.19"
+  }
+}

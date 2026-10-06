@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Page not found — Evan Suryadinata</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Instrument+Sans:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; }
+    :root { --yellow:#ffd23f; --pink:#ff5c8a; --blue:#3d6bff; --green:#35d07f; --orange:#ff8a3d; --ink:#16140f; --paper:#fffcf5; }
+    html, body { height: 100%; }
+    body {
+      display: grid; place-items: center; text-align: center; padding: 2rem;
+      font-family: 'Instrument Sans', system-ui, sans-serif; color: var(--ink);
+      background: var(--yellow); background-image: radial-gradient(rgba(22,20,15,.14) 1.2px, transparent 1.3px); background-size: 26px 26px;
+    }
+    .num { position: relative; display: inline-flex; align-items: center; gap: .05em; font-family: 'Bricolage Grotesque', 'Arial Black', sans-serif; font-weight: 800; font-size: clamp(7rem, 30vw, 16rem); line-height: .9; letter-spacing: -.05em; }
+    .zero { position: relative; width: .72em; height: .72em; border-radius: 50%; background: var(--pink); border: .045em solid var(--ink); box-shadow: .05em .05em 0 var(--ink); animation: wobble 2.4s ease-in-out infinite; }
+    .zero::after { content: ''; position: absolute; inset: 22%; border-radius: 50%; background: var(--yellow); border: .03em solid var(--ink); }
+    @keyframes wobble { 0%, 100% { transform: rotate(-6deg) scale(1); } 50% { transform: rotate(8deg) scale(1.06); } }
+    h1 { margin-top: 1.5rem; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(1.6rem, 4vw, 2.4rem); letter-spacing: -.02em; }
+    p { margin-top: .6rem; font-size: 1.05rem; max-width: 34ch; margin-inline: auto; }
+    a { display: inline-block; margin-top: 1.8rem; padding: .95rem 1.6rem; border: 2px solid var(--ink); border-radius: 999px; background: var(--ink); color: var(--paper); font-weight: 700; text-decoration: none; box-shadow: 3px 3px 0 var(--pink); transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s; }
+    a:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--pink); }
+    @media (prefers-reduced-motion: reduce) { .zero { animation: none; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="num" aria-label="404">4<span class="zero" aria-hidden="true"></span>4</div>
+    <h1>This page got popped.</h1>
+    <p>The link may be old or mistyped. Everything else is still where it was.</p>
+    <a href="/">Back to the portfolio</a>
+  </main>
+</body>
+</html>
